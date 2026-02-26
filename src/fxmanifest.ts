@@ -10,8 +10,8 @@ import { writeFile } from "fs/promises";
 function reduceArray(name: string, files?: string[]): string {
   return files?.[0]
     ? `\n${name} {${files.reduce((acc, value) => {
-        return value ? `${acc}\n\t'${value}',` : acc;
-      }, "")}\n}\n`
+      return value ? `${acc}\n\t'${value}',` : acc;
+    }, "")}\n}\n`
     : "";
 }
 
@@ -32,6 +32,7 @@ function reduceObject(object: Record<string, string>): string {
 interface FxResourceManifest {
   client_scripts?: string[];
   server_scripts?: string[];
+  shared_scripts?: string[];
   files?: string[];
   dependencies?: string[];
   metadata?: Record<string, string>;
@@ -45,6 +46,7 @@ interface FxResourceManifest {
 export async function createFxmanifest({
   client_scripts,
   server_scripts,
+  shared_scripts,
   files,
   dependencies,
   metadata,
@@ -67,6 +69,7 @@ export async function createFxmanifest({
   output += reduceArray("dependencies", dependencies);
   output += reduceArray("client_scripts", client_scripts);
   output += reduceArray("server_scripts", server_scripts);
+  output += reduceArray("shared_scripts", shared_scripts);
 
   await writeFile("fxmanifest.lua", output);
 
