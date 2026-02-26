@@ -1,8 +1,13 @@
 {
   "name": "@communityox/fx-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "WIP development tools when working with the Cfx platform.",
-  "keywords": ["fivem", "overextended", "communityox", "fxutils"],
+  "keywords": [
+    "fivem",
+    "overextended",
+    "communityox",
+    "fxutils"
+  ],
   "funding": "https://ko-fi.com/thelindat",
   "bugs": "https://github.com/CommunityOx/fx-utils/issues",
   "repository": {
